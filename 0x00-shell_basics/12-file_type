@@ -1,2 +1,2 @@
 #!/bin/bash
-file -iFv tmp/iamafile
+file -ivF tmp/iamafile
