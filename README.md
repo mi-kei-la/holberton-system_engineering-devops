@@ -1,0 +1,1 @@
+This is a read me file for the 0x01. Shell, permissions project of the Holberton School foundations curriculum.
