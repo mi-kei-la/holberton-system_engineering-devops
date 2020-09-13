@@ -1,0 +1,2 @@
+#!/bin/bash
+sort -g | cut -d " " -f 1
