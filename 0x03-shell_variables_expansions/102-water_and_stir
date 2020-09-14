@@ -1,2 +1,2 @@
 #!/bin/bash
-expr $WATER + $STIR
+tr 0-4 water stir. to base 5, then add, then tr to base 8case 
