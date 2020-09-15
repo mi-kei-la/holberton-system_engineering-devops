@@ -1,2 +1,2 @@
 #!/bin/bash
-tr 0-4 water stir. to base 5, then add, then tr to base 8case 
+echo $(printf "%o" $(($((5#$(echo $WATER | tr water 01234)))+$((5#$(echo $STIR | tr stir. 01234)))))) | tr 01234567 behlnort 
