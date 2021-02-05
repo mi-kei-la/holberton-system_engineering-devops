@@ -1,13 +1,8 @@
 #!/usr/bin/env bash
 # This script displays a list of the current content directories, from the first dash onwards.
 
-for filename in ./*
+for filename in *
 do
-	if [[ $filename == *-* ]]
-	then
-		echo "$filename" | cut -d "-" -f2
-	else
-		echo "$filename" | cut -d "/" -f2
-	fi
+	echo "$filename" | cut -d "-" -f2
 done
 
