@@ -3,6 +3,6 @@
 
 for filename in *
 do
-	echo "$filename" | cut -d "-" -f2
+	echo "$filename" | cut -d "-" -f2-
 done
 
