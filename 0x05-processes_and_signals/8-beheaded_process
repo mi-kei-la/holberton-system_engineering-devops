@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# This script kills the highlander process
+
+pkill -SIGKILL -f highlander
