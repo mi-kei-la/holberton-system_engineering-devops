@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+# This script displays "To infinity and beyond" indefinitely, creates a file containing its PID, and traps several signals.
+
+# Create file containing process id.
+echo $$ > /var/run/holbertonscript.pid
+
+# Define functions.
+function delex()
+{
+	rm /var/run/holbertonscript.pid
+	return
+}
+function on_term()
+{
+	echo "I hate the kill command"
+	delex
+}
+function on_int()
+{
+	echo "Y U no love me?!"
+}
+
+#Trap signals.
+trap on_term SIGTERM
+trap on_int SIGINT
+trap delex SIGQUIT
+
+# Printing loop.
+i=0
+while [ $i ]
+do
+	echo "To infinity and beyond"
+done
