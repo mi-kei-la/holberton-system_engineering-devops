@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# This script terminates the process of task 4.
+
+pkill -f to_infinity
+
