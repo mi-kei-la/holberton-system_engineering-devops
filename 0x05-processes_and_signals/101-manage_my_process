@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+# This init scripts manages the process of manage_my_process.
+
+start()
+{
+	./manage_my_process &
+	sudo touch /var/run/my_process.pid
+	sudo chmod u+w /var/run/my_process.pid
+	pgrep -f manage_my_process > /var/run/my_process.pid
+	echo "manage_my_process started"
+}
+stop()
+{
+	pkill -F /var/run/my_process.pid
+	rm /var/run/my_process.pid
+	echo "manage_my_process stopped"
+}
+restart()
+{
+	pkill -F /var/run/my_process.pid
+	rm /var/run/my_process.pid
+	./manage_my_process &
+	sudo touch sudo /var/run/my_process.pid
+	sudo chmod u+x /var/run/my_process.pid
+	pgrep -f manage_my_process > /var/run/my_process.pid
+	echo "manage_my_process restarted"
+}
+
+case "$1" in
+	start)
+		start
+		;;
+	stop)
+		stop
+		;;
+	restart)
+		restart
+		;;
+	*)
+		echo "Usage: manage_my_process {start|stop|restart}"
+		;;
+esac
+	
