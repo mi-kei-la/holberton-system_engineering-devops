@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# This process displays To infinity and beyond indefinitely. It cannot be killed.
+
+i=1
+function dothis()
+{
+	echo "I am invincible!!!"
+}
+trap dothis SIGTERM
+while [ $i ]
+do
+	echo "To infinity and beyond"
+	sleep 2
+done
+
