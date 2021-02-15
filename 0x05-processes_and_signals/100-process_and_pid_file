@@ -2,12 +2,12 @@
 # This script displays "To infinity and beyond" indefinitely, creates a file containing its PID, and traps several signals.
 
 # Create file containing process id.
-echo $$ > /var/run/holbertonscript.pid
+sudo echo $$ > /var/run/holbertonscript.pid
 
 # Define functions.
 function delex()
 {
-	rm /var/run/holbertonscript.pid
+	sudo rm /var/run/holbertonscript.pid
 	return
 }
 function on_term()
