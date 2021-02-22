@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
+# This script displays the IPs of all listening ports.
 netstat -pl
 
