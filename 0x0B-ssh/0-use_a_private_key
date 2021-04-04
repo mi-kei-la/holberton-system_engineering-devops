@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
+# This script uses ssh to connect to a given server
+# via ssh keys.
 ssh -i ./.ssh/holberton ubuntu@35.231.57.6
 
