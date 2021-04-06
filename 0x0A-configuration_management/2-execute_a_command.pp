@@ -1,6 +1,6 @@
 # This manifest kills a given process.
 exec { 'kill_me_now':
-command  => 'if pgrep -f killmenow; then pkill -f killmenow; fi',
+command  => 'pkill -f killmenow',
 path     => '/usr/local/bin/:/bin/',
 provider => 'shell',
 }
