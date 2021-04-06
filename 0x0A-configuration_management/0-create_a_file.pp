@@ -1,3 +1,4 @@
+# This script creates a file with a puppet manifest.
 file { '/tmp/holberton':
     ensure  => present,
     path    => '/tmp/holberton',
