@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# This script copies a given file to a remote server.
+# Parameters:
+# 	1: Path to the file to be transferred.
+# 	2: IP of the server we want to transfer the file to.
+# 	3: Username scp connects with.
+# 	4: Path to the SSH private key.
+scp "$1" -i "$4" "$3"@"$2":
+
