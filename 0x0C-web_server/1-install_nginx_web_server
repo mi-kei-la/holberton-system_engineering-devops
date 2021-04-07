@@ -2,6 +2,7 @@
 # This script installs NginX on a server.
 apt-get -y update
 apt-get -y install nginx
+ufw allow 'Nginx HTTP'
 echo "Holberton School" | tee /var/www/html/index.html
 service nginx reload
 
