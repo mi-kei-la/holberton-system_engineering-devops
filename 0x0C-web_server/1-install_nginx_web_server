@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # This script installs NginX on a server.
-sudo apt-get -y update
-sudo apt-get -y install nginx
-echo "Holberton School" | sudo tee /var/www/html/index.html
-sudo service nginx reload
+apt-get -y update
+apt-get -y install nginx
+echo "Holberton School" | tee /var/www/html/index.html
+service nginx reload
 
