@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# This script configures a new Ubuntu machine with NginX with a custom header.
+apt-get -y update
+apt-get -y install nginx
+
+# Configure firewall
+ufw allow 'Nginx HTTP'
+
+# Create and configure text for said webpage
+echo "Holberton School" > /etc/nginx/html/index.html
+touch /etc/nginx/html/404.html
+echo "Ceci n'est pas une page" > /etc/nginx/html/404.html
+
+# Add requested header
+sed -i "/as directory, then fall back to displaying a 404./a \\ \t \t add_header X-Served-By $hostname;\n" /etc/nginx/sites-available/default
+
+service nginx restart
