@@ -10,7 +10,7 @@ file_line { 'header':
   ensure => present,
   path   => '/etc/nginx/sites-available/default',
   after  => 'as directory, then fall back to displaying a 404.',
-  line   => 'add_header X-Served-By $hostname;'
+  line   => '\t add_header X-Served-By $hostname;'
 }
 
 service {'nginx':

@@ -7,6 +7,6 @@ apt-get -y install nginx
 ufw allow 'Nginx HTTP'
 
 # Add requested header
-sed -i "/as directory, then fall back to displaying a 404./a \\ \t \t add_header X-Served-By $hostname;\n" /etc/nginx/sites-available/default
+sed -i "/as directory, then fall back to displaying a 404./a \\ \t\t add_header X-Served-By $hostname;\n" /etc/nginx/sites-available/default
 
 service nginx restart
