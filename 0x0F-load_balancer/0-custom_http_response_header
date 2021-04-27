@@ -6,6 +6,13 @@ apt-get -y install nginx
 # Configure firewall
 ufw allow 'Nginx HTTP'
 
+sudo chown -R "$USER":"$USER" /var/www/
+
+echo "Holberton School" > /var/www/html/index.nginx-debian.html
+echo "Ceci n'est pas une page" > /var/www/html/new_404.html
+sudo sed -i '/server_name _/a rewrite ^/redirect_me/ https://www.youtube.com/watch?v=QH2-TGUlwu4/$1 permanent;\n' /etc/nginx/sites-available/default
+sudo sed -i '/server_name _/a error_page 404 /new_404.html; \nlocation = /new_404.html \n{\nroot /var/www/html/;\ninternal; \n}' /etc/nginx/sites-available/default
+
 # Add requested header
 sed -i "/as directory, then fall back to displaying a 404./a \\ \t\t add_header X-Served-By $hostname;\n" /etc/nginx/sites-available/default
 
