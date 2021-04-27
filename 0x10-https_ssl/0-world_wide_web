@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+# This script gets information from a domain
+subs='www lb-01 web-01 web-02'
+ip=88
+record='A'
+
+function get_subdomain_info() {
+	# Order of parameters:
+	# 1: First positional argument
+	# 2: Subdomain
+	info=$(dig "$sub"."$1" | awk '/;; ANSWER SECTION:/{getline;print}')
+	ip=$(echo "$info" | cut -f5)
+	record=$(echo "$info" | cut -f4)
+}
+function print_text() {
+	# Order of parameters:
+	# 1: Subdomain
+	# 2: Type of record
+	# 4: IP address
+	echo The subdomain "$1" is a "$2" record and points to "$3";
+}
+
+# Call functions according to parameters
+if [ "$#" -eq 2 ]; then
+	sub="$2"
+	get_subdomain_info "$1" "$sub"
+	print_text "$sub" "$record" "$ip"
+else
+	for subdomain in $subs;	do
+		sub="$subdomain"
+		get_subdomain_info "$1" "$sub"
+		print_text "$sub" "$record" "$ip"
+	done
+fi
