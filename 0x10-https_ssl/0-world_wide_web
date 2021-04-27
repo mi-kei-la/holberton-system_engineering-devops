@@ -9,8 +9,8 @@ function get_subdomain_info() {
 	# 1: First positional argument
 	# 2: Subdomain
 	info=$(dig "$sub"."$1" | awk '/;; ANSWER SECTION:/{getline;print}')
-	ip=$(echo "$info" | cut -f5)
-	record=$(echo "$info" | cut -f4)
+	ip=$(echo "$info" | awk '{print $5}')
+	record=$(echo "$info" | awk '{print $4}')
 }
 function print_text() {
 	# Order of parameters:
