@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# This script stops apache and puts nginx to listen on port 8080
+pkill apache2
+sed -i 's/80 default_server/8080 default_server/g' /etc/nginx/sites-available/default
+chmod 644 /etc/nginx/nginx.conf
+runuser -l nginx -c 'service nginx restart'

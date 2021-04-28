@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# This script executes the whoami command as the user passed as parameter.
+runuser -l "$1" -c 'whoami'
