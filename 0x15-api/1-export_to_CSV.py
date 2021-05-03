@@ -2,9 +2,10 @@
 """ This module makes a request to a RESTful API
 and exports the pertinent data to a CSV file.
 """
-from sys import argv
 import csv
 import requests
+from sys import argv
+
 
 if __name__ == "__main__":
     if len(argv) < 2:
@@ -31,7 +32,7 @@ if __name__ == "__main__":
             done.append(task.get('title'))
 
     # Print in correct format
-    print("Employee {} is done with tasks ({}/{}):".format(
+    print("Employee {} is done with tasks({}/{}):".format(
         emp_name, len(done), total))
     for task in done:
         print("\t {}".format(task))
