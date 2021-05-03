@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """This module makes a request to a RESTful API."""
-from sys import argv
 import requests
+from sys import argv
 
 
 if __name__ == "__main__":
