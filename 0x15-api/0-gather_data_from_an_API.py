@@ -17,7 +17,7 @@ if __name__ == "__main__":
 
     # Get employee's tasks
     par = {'userId': str(employee_id)}
-    r = requests.get('https://jsonplaceholder.typicode.com/todos', params=par)
+    r = requests.get('https://jsonplaceholder.typicode.com/todos')
     done = []
     tasks = r.json()
     total = len(tasks)
