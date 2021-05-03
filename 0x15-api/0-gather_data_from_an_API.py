@@ -16,7 +16,6 @@ if __name__ == "__main__":
     for dic in r.json():
         if dic.get('id') == employee_id:
             employee_name = dic.get('name')
-    print(employee_name)
 
     # Get employee's tasks
     par = {'userId': str(employee_id)}
@@ -27,7 +26,6 @@ if __name__ == "__main__":
     for task in tasks:
         if task.get('completed') is True:
             done.append(task.get('title'))
-    print(done)
 
     # Print in correct format
     print("Employee {} is done with tasks ({}/{}):".format(
