@@ -8,22 +8,23 @@ if __name__ == "__main__":
 
     # Get employee name
     employee_id = int(argv[1])
-    par = {'id': str(employee_id)}
     r = requests.get('https://jsonplaceholder.typicode.com/users')
 
     for dic in r.json():
         if dic.get('id') == employee_id:
             employee_name = dic.get('name')
+            break
 
     # Get employee's tasks
-    par = {'userId': str(employee_id)}
-    r = requests.get('https://jsonplaceholder.typicode.com/todos')
+    r = requests.get('https://jsonplaceholder.typicode.com/todos/')
     done = []
+    total = 0
     tasks = r.json()
-    total = len(tasks)
     for task in tasks:
-        if task.get('completed') is True:
-            done.append(task.get('title'))
+        if task.get('userId') == employee_id:
+            total += 1
+            if task.get('completed') is True:
+                done.append(task.get('title'))
 
     # Print in correct format
     print("Employee {} is done with tasks({}/{}):".format(
