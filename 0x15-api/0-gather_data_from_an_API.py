@@ -5,13 +5,11 @@ from sys import argv
 
 
 if __name__ == "__main__":
-    if len(argv) < 2:
-        exit
 
     # Get employee name
     employee_id = int(argv[1])
     par = {'id': str(employee_id)}
-    r = requests.get('https://jsonplaceholder.typicode.com/users', params=par)
+    r = requests.get('https://jsonplaceholder.typicode.com/users')
 
     for dic in r.json():
         if dic.get('id') == employee_id:
