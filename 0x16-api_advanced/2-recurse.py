@@ -14,34 +14,19 @@ def recurse(subreddit, hot_list=[]):
     if subreddit == "":
         return None
 
-    head = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64)'}
-    url = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
-    if not hot_list:
-        par = {'limit': 100}
+    headers = {'User-Agent': 'SoyYo!'}
+    url = "https://www.reddit.com/r/" \
+        + subreddit \
+        + "/hot.json?after=" \
+        + next_page
+    res = requests.get(url, headers=headers, allow_redirects=False)
+    if res.status_code == 200:
+        for element in res.json().get('data').get('children'):
+            hot_list.append(element.get('data').get('title'))
+        next_page = res.json().get('data').get('after')
+        if next_page:
+            recurse(subreddit, hot_list, next_page)
+        return hot_list
     else:
-        par = {'limit': 100, 'after': hot_list[-1][1]}
-    r = requests.get(url, headers=head, params=par)
-    res = r.json()
-    if res.get('data').get('children'):
-        print('theres a post')
-        print()
-        for post in res['data']['children']:
-            post_list = []
-            post_list.append(post['data']['title'])
-            # print('title: ' + post['data']['title'])
-            fullname = post['kind'] + '_' + post['data']['id']
-            post_list.append(fullname)
-            hot_list.append(post_list)
-        recurse(subreddit, hot_list)
-    else:
-        print('else')
-        if hot_list:
-            print('recursion happened')
-            titles = []
-            for post in hot_list:
-                titles.append(post[0])
-            hot_list = titles
-            return hot_list
-        else:
-            print('fail')
-            return None
+        return None
+    return hot_list
