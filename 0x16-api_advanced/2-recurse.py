@@ -5,7 +5,7 @@ import json
 import requests
 
 
-def recurse(subreddit, hot_list=[]):
+def recurse(subreddit, hot_list=[], next_page=""):
     """This function takes a subreddit as parameter and recursively
     fills the list of titles of hot articles, until the entire subreddit
     has been parsed. This function returns the list of hot articles.
